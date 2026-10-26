@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --color-ivory: #faf6ec;
+  --color-paper: #fffdf7;
+  --color-sand: #f1ead8;
+  --color-line: #e4dac0;
+  --color-forest: #1f3d2e;
+  --color-forest-deep: #142a1f;
+  --color-forest-soft: #2f5a44;
+  --color-saffron: #d9731f;
+  --color-saffron-deep: #b45a12;
+  --color-gold: #b8913a;
+  --color-ink: #1d2620;
+  --color-muted: #5e675f;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  ::selection { background: var(--color-saffron); color: white; }
+  :focus-visible { outline: 2px solid var(--color-saffron); outline-offset: 2px; }
+  * { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+  *:hover { scrollbar-color: var(--color-line) transparent; }
+}
+
+@layer components {
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:999px; padding:.75rem 1.4rem; font-weight:600; font-size:.95rem; transition:all .2s; cursor:pointer; min-height:44px; }
+  .btn-primary { background: var(--color-forest); color:#fff; }
+  .btn-primary:hover { background: var(--color-forest-deep); }
+  .btn-saffron { background: var(--color-saffron); color:#fff; }
+  .btn-saffron:hover { background: var(--color-saffron-deep); }
+  .btn-outline { border:1px solid var(--color-forest); color: var(--color-forest); background: transparent; }
+  .btn-outline:hover { background: var(--color-forest); color:#fff; }
+  .btn-light { background: rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.5); backdrop-filter: blur(4px); }
+  .btn-light:hover { background:#fff; color: var(--color-forest); }
+  .btn-sm { padding:.45rem .9rem; font-size:.85rem; min-height:36px; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+  .field { width:100%; border:1px solid var(--color-line); background: var(--color-paper); border-radius:.75rem; padding:.7rem .9rem; min-height:44px; }
+  .field:focus { border-color: var(--color-forest); outline:none; box-shadow:0 0 0 3px rgba(31,61,46,.15); }
+  .label { display:block; font-size:.8rem; font-weight:600; color: var(--color-muted); margin-bottom:.3rem; letter-spacing:.02em; }
+  .card { background: var(--color-paper); border:1px solid var(--color-line); border-radius:1.1rem; }
+  .eyebrow { font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; font-weight:700; color: var(--color-saffron-deep); }
+  .container-x { width:100%; max-width:80rem; margin-inline:auto; padding-inline:1.25rem; }
+  @media (min-width:768px){ .container-x { padding-inline:2rem; } }
+}
+
+@keyframes rise { from { opacity:0; transform: translateY(14px);} to { opacity:1; transform:none; } }
+.rise { animation: rise .7s ease both; }
+@media (prefers-reduced-motion: reduce){ .rise{animation:none} html{scroll-behavior:auto} }
